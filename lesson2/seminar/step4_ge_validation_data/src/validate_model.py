@@ -7,7 +7,7 @@ from pathlib import Path
 from sklearn.metrics import accuracy_score
 
 
-# Функция для загрузки данных из yaml файла
+# Функция для загрузки параметров из yaml файла
 def load_params():
     with open("params.yaml", "r") as f:
         return yaml.safe_load(f)
@@ -33,8 +33,8 @@ def validate_model():
         accuracy = metrics["accuracy"]
         print(f"Используем метрику из metrics.json: accuracy = {accuracy:.4f}")
     else:
-        # Если метрик нет, то пересчет accuracy
-        print("metrics.json не найден или accuracy отсутствует — пересчитываем метрику...")
+        # Если метрик нет то пересчет accuracy
+        print("metrics.json не найден или accuracy отсутствует")
 
         # Загрузка модели
         with open("models/model.pkl", "rb") as f:

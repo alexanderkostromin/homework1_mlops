@@ -106,5 +106,5 @@ stages:
       size: 109
     - path: src/validate_model.py
       hash: md5
-      md5: b16bd38df3c81c6c94c41009af48ba83
-      size: 2062
+      md5: 57dddc67fc263bc392ef29a5eb4ff10e
+      size: 2021
