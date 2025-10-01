@@ -4,6 +4,11 @@ import yaml
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 
+# Для хранения метрик
+import json
+# Для создания папки
+from pathlib import Path
+
 
 def load_params():
     with open("params.yaml", "r") as f:
@@ -29,6 +34,17 @@ def evaluate_model():
     accuracy = accuracy_score(y_test, y_pred)
 
     print(f"Accuracy: {accuracy:.4f}")
+
+    # Создадим папку metrics
+    Path("metrics").mkdir(exist_ok=True)
+    # Запишем в переменную количество строк в датафрейме
+    num_rows = len(df)
+    metrics = {
+        "accuracy": accuracy,
+        "num_rows": num_rows
+    }
+    with open("metrics/metrics.json", "w") as f:
+        json.dump(metrics, f, indent=4)
 
 
 if __name__ == "__main__":
